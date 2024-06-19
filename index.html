@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo Rescisão</title>
+    <script src="calculoDom.js" defer></script>
+</head>
+
+<body>
+    <h1>Calculando sua rescisão</h1>
+
+    <form>
+        <label for="salario">Salário bruto</label>
+        <input type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
+        <label for="diasTrabalhados">Dias trabalhados: </label>
+        <input type="text" name="diasTrabalhados" id="diasTrabalhados" placeholder="Digite quantos dias trabalhados">
+        <label for="mesesTrabalhados">Meses trabalhados</label>
+        <input type="text" name="mesesTrabalhados" id="mesesTrabalhados"
+            placeholder="Digite a quantidade de meses trabalhados">
+        <label for="fProporcionais">Férias Proporcionais</label>
+        <input type="text" name="fProporcionais" id="fProporcionais"
+            placeholder="Digite a quantidade das férias proporcionais">
+        <button id="btn">Calcular</button>
+    </form>
+    <div>
+        <p id="exibirSalario"></p>
+        <p id="exibirDecimo"></p>
+        <p id="exibirFeriasVenc"></p>
+        <p id="exibirFeriasPropo"></p>
+        <p id="total"></p>
+    </div>
+</body>
+
+</html>
