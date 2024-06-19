@@ -25,10 +25,15 @@ function calcularFeriasProporcionais(salario, quantidadeFeriasProporcionais) {
 
 // Função principal para calcular a rescisão
 function calcularRescisao() {
-  const salario = parseInt(salarioDom.value);
-  const dias = parseInt(diasTrabalhados.value);
-  const meses = parseInt(mesesTrabalhados.value);
-  const quantidadeFeriasProporcionais = parseInt(fProporcionais.value);
+  const salario = parseFloat(salarioDom.value);
+  const dias = parseFloat(diasTrabalhados.value);
+  const meses = parseFloat(mesesTrabalhados.value);
+  const quantidadeFeriasProporcionais = parseFloat(fProporcionais.value);
+
+  if (!validarEntrada(salario) || !validarEntrada(dias) || !validarEntrada(meses) || !validarEntrada(quantidadeFeriasProporcionais)) {
+    alert("Por favor, preencha todos os campos com valores válidos.");
+    return;
+  }
 
   const valorSalario = calcularValorSalario(salario, dias);
   const decimoTerceiro = calcularDecimoTerceiro(salario, meses);
@@ -68,6 +73,12 @@ function exibirValoresNoDOM(valores) {
   const total = document.querySelector("#total");
   total.innerHTML = `Rescisão: ${valores.total}`;
 }
+
+//Função para erros
+function validarEntrada(valor) {
+  return !isNaN(valor) && valor !== "";
+}
+
 
 const btn = document.querySelector("#btn").addEventListener("click", (e) => {
   e.preventDefault();
