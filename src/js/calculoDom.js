@@ -2,6 +2,7 @@ const salarioDom = document.querySelector("#salario");
 const diasTrabalhados = document.querySelector("#diasTrabalhados");
 const mesesTrabalhados = document.querySelector("#mesesTrabalhados");
 const fProporcionais = document.querySelector("#fProporcionais");
+const fVencidas = document.querySelector("#fVencidas");
 
 // Função para calcular o valor do salário
 function calcularValorSalario(salario, dias) {
@@ -15,7 +16,11 @@ function calcularDecimoTerceiro(salario, meses) {
 
 // Função para calcular as férias vencidas
 function calcularFeriasVencidas(salario) {
-  return salario / 3 + salario;
+  if (fVencidas.checked) {
+    return salario / 3 + salario;
+  } else {
+    return 0;
+  }
 }
 
 // Função para calcular as férias proporcionais
@@ -84,7 +89,14 @@ function exibirValoresNoDOM(valores) {
   total.innerHTML = `Rescisão: ${valores.total}`;
 }
 
-const btn = document.querySelector("#btn").addEventListener("click", (e) => {
+document.querySelector("#btnCalcular").addEventListener("click", (e) => {
   e.preventDefault();
   calcularRescisao();
+});
+document.querySelector("#btnLimpar").addEventListener("click", (e) => {
+  e.preventDefault();
+  salarioDom.value = 0;
+  diasTrabalhados.value = 0;
+  mesesTrabalhados.value = 0;
+  fProporcionais.value = 0;
 });
