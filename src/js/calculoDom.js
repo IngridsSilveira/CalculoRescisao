@@ -100,3 +100,8 @@ document.querySelector("#btnLimpar").addEventListener("click", (e) => {
   mesesTrabalhados.value = 0;
   fProporcionais.value = 0;
 });
+document.querySelector("#mostrarInfo").addEventListener("click", (e) => {
+  e.preventDefault();
+  const divInfo = document.querySelector("#invisible");
+  divInfo.classList.toggle("invisible");
+});

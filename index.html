@@ -5,58 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo Rescisão</title>
-    <!--CSS
-    <link rel="stylesheet" href="dist/output.css">
-    -->
+    <!--FAVICON-->
+    <link rel="shortcut icon" href="./src/imgs/Hamzasaleem-Stock-Style-3-Calculator.512.png" type="image/x-icon">
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/40791cf3f5.js" crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="./src/styles/input.css">
     <!--JAVASCRIPT-->
     <script src="./src/js/calculoDom.js" defer></script>
 </head>
 
-<body class="">
-    <h1>Calculando sua rescisão</h1>
+<body class="container-fluid bg-body-secondary">
+    <div class="p-3">
+        <h1 class="text-center fw-semibold ">Cálculo Rescisão</h1>
+    </div>
 
-    <form>
-        <label for="salario">Salário bruto</label>
-        <input type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
-
-        <label for="diasTrabalhados">Dias trabalhados: </label>
-        <input type="text" name="diasTrabalhados" id="diasTrabalhados" placeholder="Digite quantos dias trabalhados">
-
-        <label for="mesesTrabalhados">Meses trabalhados</label>
-        <input type="text" name="mesesTrabalhados" id="mesesTrabalhados"
-            placeholder="Digite a quantidade de meses trabalhados">
-
-        <label for="fProporcionais">Férias Proporcionais</label>
-        <input type="text" name="fProporcionais" id="fProporcionais"
-            placeholder="Digite a quantidade das férias proporcionais">
-
-        <label for="fVencidas">Férias Vencidas</label>
-        <input type="checkbox" name="fVencidas" id="fVencidas">
-
+    <main class="container d-flex flex-column">
+        <section class="pb-5">
+            <form class="d-flex flex-column align-items-center">
+                <div class="p-2">
+                    <div><label for="salario">Salário Bruto:</label></div>
+                    <input type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
+                </div>
+                <div class="p-2">
+                    <div><label for="diasTrabalhados">Dias Trabalhados: </label></div>
+                    <input type="text" name="diasTrabalhados" id="diasTrabalhados"
+                        placeholder="Digite quantos dias trabalhados">
+                </div>
+                <div class="p-2">
+                    <div><label for="mesesTrabalhados">Meses Trabalhados:</label></div>
+                    <input type="text" name="mesesTrabalhados" id="mesesTrabalhados"
+                        placeholder="Digite a quantidade de meses trabalhados">
+                </div>
+                <div class="p-2">
+                    <div><label for="fProporcionais">Férias Proporcionais:</label></div>
+                    <input type="text" name="fProporcionais" id="fProporcionais"
+                        placeholder="Digite a quantidade das férias proporcionais">
+                </div>
+                <div class="p-2 checkbox">
+                    <label for="fVencidas">Férias Vencidas?</label>
+                    <input type="checkbox" name="fVencidas" id="fVencidas" class="checkbox">
+                </div>
+                <div class="p-2">
+                    <button class="btn btn-danger mx-2" id="btnCalcular">Calcular</button>
+                    <button class="btn btn-secondary" id="btnLimpar">Limpar</button>
+                </div>
+            </form>
+        </section>
+        <section>
+            <article>
+                <p id="exibirSalario"></p>
+                <p id="exibirDecimo"></p>
+                <p id="exibirFeriasVenc"></p>
+                <p id="exibirFeriasPropo"></p>
+                <p id="total"></p>
+            </article>
+            <article>
+                <a href="#" id="mostrarInfo">Como funciona o cálculo?</a href="#">
+                <div class="invisible" id="invisible">
+                    <p>Salário Proporcional: Calculamos o valor do salário referente aos dias trabalhados no mês da
+                        rescisão dividindo o salário bruto por 31 e multiplicando pelo número de dias trabalhados.
+                    </p>
+                    <p> Décimo Terceiro Proporcional: Calculamos o valor do décimo terceiro proporcional dividindo o
+                        salário bruto por 12 e multiplicando pelo número de meses trabalhados no ano corrente.
+                    </p>
+                    <p> Férias Vencidas: Se você tem férias vencidas (não gozadas), calculamos adicionando um terço ao
+                        valor do salário bruto (1/3 a mais do salário).
+                    </p>
+                    <p>Férias Proporcionais: Calculamos as férias proporcionais dividindo o salário bruto por 12 e
+                        multiplicando pelo número de meses trabalhados desde o último período aquisitivo.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por <a href="https://ingriddev.netlify.app/">Ingrid de Souza</a></p>
         <div>
-            <button id="btnCalcular">Calcular</button>
-            <button id="btnLimpar">Limpar</button>
+            <a href="https://www.linkedin.com/in/ingridssilveira/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/IngridsSilveira"><i class="fa-brands fa-github"></i></a>
+            <a href="https://ingriddev.netlify.app/"><img src="./src/imgs/favicon.ico" alt="myWebsite"></a>
         </div>
-    </form>
-    <div>
-        <p id="exibirSalario"></p>
-        <p id="exibirDecimo"></p>
-        <p id="exibirFeriasVenc"></p>
-        <p id="exibirFeriasPropo"></p>
-        <p id="total"></p>
-    </div>
-    <div>
-        <a href="#" id="mostrarInfo">Como funciona o cálculo?</a href="#">
-        <div class="invisible" id="invisible">
-            <p>Salário Proporcional: Calculamos o valor do salário referente aos dias trabalhados no mês da rescisão dividindo o salário bruto por 31 e multiplicando pelo número de dias trabalhados.
-            </p>
-            <p> Décimo Terceiro Proporcional: Calculamos o valor do décimo terceiro proporcional dividindo o salário bruto por 12 e multiplicando pelo número de meses trabalhados no ano corrente.
-            </p>
-            <p> Férias Vencidas: Se você tem férias vencidas (não gozadas), calculamos adicionando um terço ao valor do salário bruto (1/3 a mais do salário).
-            </p>
-            <p>Férias Proporcionais: Calculamos as férias proporcionais dividindo o salário bruto por 12 e multiplicando pelo número de meses trabalhados desde o último período aquisitivo.</p>
-        </div>
-    </div>
+    </footer>
 </body>
 
 </html>
