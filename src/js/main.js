@@ -14,6 +14,11 @@ let exibirDecimo = document.querySelector("#exibirDecimo");
 let exibirFeriasVenc = document.querySelector("#exibirFeriasVenc");
 let exibirFeriasPropo = document.querySelector("#exibirFeriasPropo");
 let total = document.querySelector("#total");
+let exibirINSS = document.querySelector("#exibirINSS");
+let exibirDecimoInss = document.querySelector("#exibirDecimoInss");
+let liquido = document.querySelector("#liquido");
+
+const mostrar = document.querySelector("#mostrar");
 
 //BOTÕES
 document.querySelector("#btnCalcular").addEventListener("click", (e) => {
@@ -28,8 +33,12 @@ document.querySelector("#btnCalcular").addEventListener("click", (e) => {
     exibirDecimo,
     exibirFeriasVenc,
     exibirFeriasPropo,
-    total
+    total,
+    exibirINSS,
+    exibirDecimoInss,
+    liquido
   );
+  mostrar.classList.remove("invisible");
 });
 document.querySelector("#btnLimpar").addEventListener("click", (e) => {
   e.preventDefault();
@@ -42,8 +51,12 @@ document.querySelector("#btnLimpar").addEventListener("click", (e) => {
     exibirDecimo,
     exibirFeriasVenc,
     exibirFeriasPropo,
-    total
+    total,
+    exibirINSS,
+    exibirDecimoInss,
+    liquido
   );
+  mostrar.classList.add("invisible");
 });
 
 document.querySelector("#mostrarInfo").addEventListener("click", (e) => {

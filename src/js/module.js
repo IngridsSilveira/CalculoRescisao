@@ -25,25 +25,29 @@ export function calcularFeriasProporcionais(
   return (salario / 12) * quantidadeFeriasProporcionais;
 }
 
-// Função para validar erros na entrada
-export function validarEntrada(valor) {
-  return !isNaN(valor) && valor > 0;
-}
-
-// Função para exibir valores
-export function exibirValoresNoDOM(
-  valores,
-  exibirSalario,
-  exibirDecimo,
-  exibirFeriasVenc,
-  exibirFeriasPropo,
-  total
-) {
-  exibirSalario.innerHTML = `Salário: ${valores.valorSalario}`;
-  exibirDecimo.innerHTML = `Décimo 13º: ${valores.decimoTerceiro}`;
-  exibirFeriasVenc.innerHTML = `Férias Vencidas ${valores.feriasVencidas}`;
-  exibirFeriasPropo.innerHTML = `Férias Proporcionais ${valores.feriasProporcionais}`;
-  total.innerHTML = `Rescisão: ${valores.total}`;
+//Função para calcular desconto INSS
+export function descontoInss(salario) {
+  let desconto;
+  if (salario <= 1412.0) {
+    desconto = salario * 0.075;
+  } else if (salario <= 2666.68) {
+    desconto = 1412.0 * 0.075 + (salario - 1412.0) * 0.09;
+    desconto = desconto - 21.18;
+  } else if (salario <= 4000.03) {
+    desconto =
+      1412.0 * 0.075 + (2666.68 - 1412.0) * 0.09 + (salario - 2666.68) * 0.12;
+    desconto = desconto - 101.18;
+  } else if (salario <= 7786.02) {
+    desconto =
+      1412.0 * 0.075 +
+      (2666.68 - 1412.0) * 0.09 +
+      (4000.03 - 2666.68) * 0.12 +
+      (salario - 4000.03) * 0.14;
+    desconto = desconto - 181.18;
+  } else {
+    desconto = 908.85; // Teto do INSS
+  }
+  return desconto;
 }
 
 // Função principal para calcular a rescisão
@@ -57,7 +61,10 @@ export function calcularRescisao(
   exibirDecimo,
   exibirFeriasVenc,
   exibirFeriasPropo,
-  total
+  total,
+  exibirINSS,
+  exibirDecimoInss,
+  salLiquido
 ) {
   const salario = parseFloat(salarioDom.value);
   const dias = parseFloat(diasTrabalhados.value);
@@ -85,12 +92,20 @@ export function calcularRescisao(
   const totalValor =
     valorSalario + decimoTerceiro + feriasVencidas + feriasProporcionais;
 
+  const inssSalario = descontoInss(valorSalario);
+  console.log(decimoTerceiro);
+  const decimoInss = descontoInss(decimoTerceiro);
+  const salLiquidoT = totalValor - (inssSalario + decimoInss);
+
   const resultado = {
     valorSalario: valorSalario.toFixed(2),
     decimoTerceiro: decimoTerceiro.toFixed(2),
     feriasVencidas: feriasVencidas.toFixed(2),
     feriasProporcionais: feriasProporcionais.toFixed(2),
     total: totalValor.toFixed(2),
+    inssSalario: inssSalario.toFixed(2),
+    decimoInss: decimoInss.toFixed(2),
+    salLiquido: salLiquidoT.toFixed(2),
   };
 
   exibirValoresNoDOM(
@@ -99,8 +114,39 @@ export function calcularRescisao(
     exibirDecimo,
     exibirFeriasVenc,
     exibirFeriasPropo,
-    total
+    total,
+    exibirINSS,
+    exibirDecimoInss,
+    salLiquido
   );
+}
+
+// Função para validar erros na entrada
+export function validarEntrada(valor) {
+  return !isNaN(valor) && valor > 0;
+}
+
+// Função para exibir valores
+export function exibirValoresNoDOM(
+  valores,
+  exibirSalario,
+  exibirDecimo,
+  exibirFeriasVenc,
+  exibirFeriasPropo,
+  total,
+  exibirINSS,
+  exibirDecimoInss,
+  salLiquido
+) {
+  exibirSalario.innerHTML = `Salário: R$${valores.valorSalario}`;
+  exibirDecimo.innerHTML = `Décimo 13º: R$${valores.decimoTerceiro}`;
+  exibirFeriasVenc.innerHTML = `Férias Vencidas: R$${valores.feriasVencidas}`;
+  exibirFeriasPropo.innerHTML = `Férias Proporcionais: R$${valores.feriasProporcionais}`;
+  total.innerHTML = `Total sem descontos: R$${valores.total}`;
+
+  exibirINSS.innerHTML = `INSS: R$${valores.inssSalario}`;
+  exibirDecimoInss.innerHTML = `INSS do décimo: R$${valores.decimoInss}`;
+  salLiquido.innerHTML = `Total Líquido: R$${valores.salLiquido}`;
 }
 
 // Função para limpar valores
@@ -113,7 +159,10 @@ export function limparValores(
   exibirDecimo,
   exibirFeriasVenc,
   exibirFeriasPropo,
-  total
+  total,
+  exibirINSS,
+  exibirDecimoInss,
+  salLiquido
 ) {
   salarioDom.value = 0;
   diasTrabalhados.value = 0;
@@ -125,4 +174,7 @@ export function limparValores(
   exibirFeriasVenc.innerHTML = "";
   exibirFeriasPropo.innerHTML = "";
   total.innerHTML = "";
+  exibirINSS.innerHTML = "";
+  exibirDecimoInss.innerHTML = "";
+  salLiquido.innerHTML = "";
 }

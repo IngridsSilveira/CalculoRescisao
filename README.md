@@ -28,6 +28,8 @@ Para calcular a sua rescisão, por favor, forneça as seguintes informações:
 
     • Férias Proporcionais: Calculamos as férias proporcionais dividindo o salário bruto por 12 e multiplicando pelo número de meses trabalhados desde o último período aquisitivo.
 
+    • Descontos: Calculamos os descontos baseados em seu saldo de salário, no mês de demissão, e sobre o seu valor de Décimo 13º. Depois é somado ambos os valores e subtraído do seu total.
+
 ## 👀 Exibição dos Resultados:
 
     • A aplicação exibe os valores calculados de salário proporcional, décimo terceiro, férias vencidas (se aplicável) e férias proporcionais.
