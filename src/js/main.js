@@ -18,7 +18,7 @@ let exibirINSS = document.querySelector("#exibirINSS");
 let exibirDecimoInss = document.querySelector("#exibirDecimoInss");
 let liquido = document.querySelector("#liquido");
 
-const mostrar = document.querySelector("#mostrar");
+const mostrar = document.querySelector(".mostrar");
 
 //BOTÕES
 document.querySelector("#btnCalcular").addEventListener("click", (e) => {
@@ -38,8 +38,10 @@ document.querySelector("#btnCalcular").addEventListener("click", (e) => {
     exibirDecimoInss,
     liquido
   );
-  mostrar.classList.remove("invisible");
+  mostrar.classList.remove("d-none");
+  mostrar.classList.add("d-flex");
 });
+
 document.querySelector("#btnLimpar").addEventListener("click", (e) => {
   e.preventDefault();
   limparValores(
@@ -56,11 +58,12 @@ document.querySelector("#btnLimpar").addEventListener("click", (e) => {
     exibirDecimoInss,
     liquido
   );
-  mostrar.classList.add("invisible");
+    mostrar.classList.add("d-none");
+    mostrar.classList.remove("d-flex");
 });
 
 document.querySelector("#mostrarInfo").addEventListener("click", (e) => {
   e.preventDefault();
   const divInfo = document.querySelector("#invisible");
-  divInfo.classList.toggle("invisible");
+  divInfo.classList.toggle("d-none");
 });

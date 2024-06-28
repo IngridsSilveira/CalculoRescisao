@@ -15,3 +15,10 @@ h1 {
 #btnCalcular:hover {
   background-color: #ef4823e3;
 }
+.icons {
+  margin-top: -20px;
+  font-size: 30px;
+}
+.icons:hover {
+  opacity: 80%;
+}

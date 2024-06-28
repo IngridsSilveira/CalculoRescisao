@@ -138,11 +138,11 @@ export function exibirValoresNoDOM(
   exibirDecimoInss,
   salLiquido
 ) {
-  exibirSalario.innerHTML = `Salário: R$${valores.valorSalario}`;
+  exibirSalario.innerHTML = `Saldo do Salário: R$${valores.valorSalario}`;
   exibirDecimo.innerHTML = `Décimo 13º: R$${valores.decimoTerceiro}`;
   exibirFeriasVenc.innerHTML = `Férias Vencidas: R$${valores.feriasVencidas}`;
   exibirFeriasPropo.innerHTML = `Férias Proporcionais: R$${valores.feriasProporcionais}`;
-  total.innerHTML = `Total sem descontos: R$${valores.total}`;
+  total.innerHTML = `Total Bruto: R$${valores.total}`;
 
   exibirINSS.innerHTML = `INSS: R$${valores.inssSalario}`;
   exibirDecimoInss.innerHTML = `INSS do décimo: R$${valores.decimoInss}`;

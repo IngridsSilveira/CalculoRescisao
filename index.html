@@ -20,34 +20,34 @@
 
 <body class="container-fluid bg-body-secondary">
     <div class="p-3">
-        <h1 class="text-center fw-semibold ">Cálculo Rescisão</h1>
+        <h1 class="text-center fw-semibold font-monospace ">Cálculo Rescisão</h1>
     </div>
 
-    <main class="container d-flex flex-column">
-        <section class="pb-5">
-            <form class="d-flex flex-column align-items-center">
-                <div class="p-2">
-                    <div><label for="salario">Salário Bruto:</label></div>
-                    <input type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
+    <main class="container-fluid d-flex flex-column w-100">
+        <section class="pb-5 d-flex align-content-center justify-content-center">
+            <form class="form d-flex flex-column align-items-center">
+                <div class="p-2 input-group">
+                    <div class="input-group-text bg-transparent"><label for="salario" class="fw-bold">Salário Bruto</label></div>
+                    <input class="form-control" type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
                 </div>
-                <div class="p-2">
-                    <div><label for="diasTrabalhados">Dias Trabalhados: </label></div>
-                    <input type="text" name="diasTrabalhados" id="diasTrabalhados"
+                <div class="p-2 input-group">
+                    <div class="input-group-text bg-transparent"><label for="diasTrabalhados" class="fw-bold">Dias Trabalhados</label></div>
+                    <input class="form-control" type="text" name="diasTrabalhados" id="diasTrabalhados"
                         placeholder="Digite quantos dias trabalhados">
                 </div>
-                <div class="p-2">
-                    <div><label for="mesesTrabalhados">Meses Trabalhados:</label></div>
-                    <input type="text" name="mesesTrabalhados" id="mesesTrabalhados"
+                <div class="p-2 input-group">
+                    <div class="input-group-text bg-transparent"><label for="mesesTrabalhados" class="fw-bold">Meses Trabalhados</label></div>
+                    <input class="form-control" type="text" name="mesesTrabalhados" id="mesesTrabalhados"
                         placeholder="Digite a quantidade de meses trabalhados">
                 </div>
-                <div class="p-2">
-                    <div><label for="fProporcionais">Férias Proporcionais:</label></div>
-                    <input type="text" name="fProporcionais" id="fProporcionais"
+                <div class="p-2 input-group">
+                    <div class="input-group-text bg-transparent"><label for="fProporcionais" class="fw-bold">Férias Proporcionais</label></div>
+                    <input class="form-control" type="text" name="fProporcionais" id="fProporcionais"
                         placeholder="Digite a quantidade das férias proporcionais">
                 </div>
-                <div class="p-2 checkbox">
-                    <label for="fVencidas">Férias Vencidas?</label>
-                    <input type="checkbox" name="fVencidas" id="fVencidas" class="checkbox">
+                <div class="p-2 input-group d-flex justify-content-center">
+                    <div class="mx-2"><label class="form-check-label fw-bold" for="fVencidas">Férias Vencidas:</label></div>
+                    <input type="checkbox" name="fVencidas" id="fVencidas" class="checkbox form-check-input">
                 </div>
                 <div class="p-2">
                     <button class="btn btn-danger mx-2" id="btnCalcular">Calcular</button>
@@ -56,53 +56,63 @@
             </form>
         </section>
         <section>
-            <article>
-                <p id="exibirSalario"></p>
-                <p id="exibirDecimo"></p>
-                <p id="exibirFeriasVenc"></p>
-                <p id="exibirFeriasPropo"></p>
-                <strong>
-                    <p id="total"></p>
-                </strong>
-                <div class="invisible" id="mostrar">
-                    <h1>DESCONTOS:</h1>
-                    <p id="exibirINSS"></p>
-                    <p id="exibirDecimoInss"></p>
+            <article class="d-none mostrar flex-column align-items-center">
+                <ul class="list-group mb-3 w-50">
                     <strong>
-                        <p id="liquido"></p>
+                        <li class="list-group-item active bg-secondary border-0 rounded-top font-mono">Verbas
+                            Rescisórias:</li>
                     </strong>
-                </div>
+                    <li class="list-group-item" id="exibirSalario"></li>
+                    <li class="list-group-item" id="exibirDecimo"></li>
+                    <li class="list-group-item" id="exibirFeriasVenc"></li>
+                    <li class="list-group-item" id="exibirFeriasPropo"></li>
+                    <li class="list-group-item disabled" aria-disabled="true" id="total"></li>
+                </ul>
+                <ul class="list-group w-50">
+                    <strong>
+                        <li class="list-group-item active bg-secondary border-0 rounded-top font-mono">Descontos:</li>
+                    </strong>
+                    <li class="list-group-item" id="exibirINSS"></li>
+                    <li class="list-group-item" id="exibirDecimoInss"></li>
+                    <li class="list-group-item disabled" aria-disabled="true" id="liquido"></li>
+                </ul>
             </article>
-            <article>
-                <a href="#" id="mostrarInfo">Como funciona o cálculo?</a href="#">
-                <div class="invisible" id="invisible">
-                    <p>Salário Proporcional: Calculamos o valor do salário referente aos dias trabalhados no mês da
+            <article class="mb-1">
+                <a href="#" id="mostrarInfo">Como funciona o cálculo?</a>
+                <div class="d-none mx-auto border border-1 border-black rounded p-2 w-50" id="invisible">
+                    <p><strong>Salário Proporcional:</strong> Calculamos o valor do salário referente aos dias trabalhados no mês da
                         rescisão dividindo o salário bruto por 31 e multiplicando pelo número de dias trabalhados.
                     </p>
-                    <p> Décimo Terceiro Proporcional: Calculamos o valor do décimo terceiro proporcional dividindo o
+                    <p> <strong>Décimo Terceiro Proporcional:</strong>culamos o valor do décimo terceiro proporcional dividindo o
                         salário bruto por 12 e multiplicando pelo número de meses trabalhados no ano corrente.
                     </p>
-                    <p> Férias Vencidas: Se você tem férias vencidas (não gozadas), calculamos adicionando um terço ao
+                    <p> <strong>Férias Vencidas:</strong> Se você tem férias vencidas (não gozadas), calculamos adicionando um terço ao
                         valor do salário bruto (1/3 a mais do salário).
                     </p>
-                    <p>Férias Proporcionais: Calculamos as férias proporcionais dividindo o salário bruto por 12 e
+                    <p><strong>Férias Proporcionais:</strong> Calculamos as férias proporcionais dividindo o salário bruto por 12 e
                         multiplicando pelo número de meses trabalhados desde o último período aquisitivo.</p>
-                    <p>Descontos: Calculamos os descontos baseados em seu saldo de salário, no mês de demissão, e sobre
+                    <p><strong>Descontos:</strong> Calculamos os descontos baseados em seu saldo de salário, no mês de demissão, e sobre
                         o seu valor
                         de Décimo 13º.</p>
-                    <p>Saldo Líquido: É somado os descontos e depois subtraído do total.</p>
+                    <p><strong>Saldo Líquido:</strong> É somado os descontos e depois subtraído do total bruto.</p>
                 </div>
             </article>
         </section>
+        <footer class="d-flex flex-column align-items-center justify-content-center mt-3">
+            <p>Desenvolvido por <a class="text-dark link-underline-primary link-underline-opacity-10 link-underline-opacity-100-hover"
+                    href="https://ingriddev.netlify.app/" target="_blank">Ingrid de Souza</a></p>
+            <div class="d-flex">
+                <a href="https://www.linkedin.com/in/ingridssilveira/" class="icons" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/IngridsSilveira" class="mx-2 text-dark icons" target="_blank">
+                    <i class="fa-brands fa-github">
+                    </i>
+                </a>
+            </div>
+        </footer>
     </main>
-    <footer>
-        <p>Desenvolvido por <a href="https://ingriddev.netlify.app/">Ingrid de Souza</a></p>
-        <div>
-            <a href="https://www.linkedin.com/in/ingridssilveira/"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/IngridsSilveira"><i class="fa-brands fa-github"></i></a>
-            <a href="https://ingriddev.netlify.app/"><img src="./src/imgs/favicon.ico" alt="myWebsite"></a>
-        </div>
-    </footer>
+
 </body>
 
 </html>
