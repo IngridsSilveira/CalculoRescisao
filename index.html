@@ -18,46 +18,58 @@
     <script type="module" src="./src/js/main.js" defer></script>
 </head>
 
-<body class="container-fluid bg-body-secondary">
+<body class="container-fluid">
+    <!-- HEADER E TÍTULOS -->
     <div class="p-3">
-        <h1 class="text-center fw-semibold font-monospace ">Cálculo Rescisão</h1>
+        <h1 class="text-center fw-semibold">Cálculo Rescisão</h1>
+        <h2 class="text-center fw-semibold mb-3">Jovem Aprendiz</h2>
     </div>
-
+    <!-- MAIN-->
     <main class="container-fluid d-flex flex-column w-100">
+        <!-- SECTION QUE CONTÉM OS FORMULÁRIOS -->
         <section class="pb-5 d-flex align-content-center justify-content-center">
             <form class="form d-flex flex-column align-items-center">
                 <div class="p-2 input-group">
-                    <div class="input-group-text bg-transparent"><label for="salario" class="fw-bold">Salário Bruto</label></div>
-                    <input class="form-control" type="text" name="salario" id="salario" placeholder="Digite seu salário bruto">
+                    <div class="input-group-text"><label for="salario" class="fw-bold">Salário
+                            Bruto</label></div>
+                    <input class="form-control" type="text" name="salario" id="salario"
+                        placeholder="Digite seu salário bruto">
                 </div>
                 <div class="p-2 input-group">
-                    <div class="input-group-text bg-transparent"><label for="diasTrabalhados" class="fw-bold">Dias Trabalhados</label></div>
+                    <div class="input-group-text"><label for="diasTrabalhados" class="fw-bold">Dias
+                            Trabalhados</label></div>
                     <input class="form-control" type="text" name="diasTrabalhados" id="diasTrabalhados"
                         placeholder="Digite quantos dias trabalhados">
                 </div>
                 <div class="p-2 input-group">
-                    <div class="input-group-text bg-transparent"><label for="mesesTrabalhados" class="fw-bold">Meses Trabalhados</label></div>
+                    <div class="input-group-text"><label for="mesesTrabalhados" class="fw-bold">Meses
+                            Trabalhados</label></div>
                     <input class="form-control" type="text" name="mesesTrabalhados" id="mesesTrabalhados"
                         placeholder="Digite a quantidade de meses trabalhados">
                 </div>
                 <div class="p-2 input-group">
-                    <div class="input-group-text bg-transparent"><label for="fProporcionais" class="fw-bold">Férias Proporcionais</label></div>
+                    <div class="input-group-text"><label for="fProporcionais" class="fw-bold">Férias
+                            Proporcionais</label></div>
                     <input class="form-control" type="text" name="fProporcionais" id="fProporcionais"
                         placeholder="Digite a quantidade das férias proporcionais">
                 </div>
-                <div class="p-2 input-group d-flex justify-content-center">
-                    <div class="mx-2"><label class="form-check-label fw-bold" for="fVencidas">Férias Vencidas:</label></div>
-                    <input type="checkbox" name="fVencidas" id="fVencidas" class="checkbox form-check-input">
+                <div class="p-2 input-group d-flex justify-content-center align-items-center">
+                    <div class="mx-2"><label class="form-check-label fw-bold" for="fVencidas">Férias Vencidas:</label>
+                    </div>
+                    <input type="checkbox" name="fVencidas" id="fVencidas"
+                        class="checkbox form-check-input bg-secondary">
                 </div>
                 <div class="p-2">
-                    <button class="btn btn-danger mx-2" id="btnCalcular">Calcular</button>
-                    <button class="btn btn-secondary" id="btnLimpar">Limpar</button>
+                    <button class="btn btn-danger mx-2 fw-bold" id="btnCalcular">Calcular</button>
+                    <button class="btn btn-secondary fw-bold" id="btnLimpar">Limpar</button>
                 </div>
             </form>
         </section>
+        <!-- SECTION QUE CONTÉM A EXIBIÇÃO DAS INFORMAÇÕES -->
         <section>
+            <!-- PRIMEIRO ARTICLE EXIBE OS CÁLCULOS -->
             <article class="d-none mostrar flex-column align-items-center">
-                <ul class="list-group mb-3 w-50">
+                <ul class="list-group  w-50">
                     <strong>
                         <li class="list-group-item active bg-secondary border-0 rounded-top font-mono">Verbas
                             Rescisórias:</li>
@@ -66,40 +78,56 @@
                     <li class="list-group-item" id="exibirDecimo"></li>
                     <li class="list-group-item" id="exibirFeriasVenc"></li>
                     <li class="list-group-item" id="exibirFeriasPropo"></li>
-                    <li class="list-group-item disabled" aria-disabled="true" id="total"></li>
+                    <li class="list-group-item disabled rounded-0" aria-disabled="true" id="total"></li>
                 </ul>
                 <ul class="list-group w-50">
                     <strong>
-                        <li class="list-group-item active bg-secondary border-0 rounded-top font-mono">Descontos:</li>
+                        <li class="list-group-item active bg-secondary border-0 font-mono">Descontos:</li>
                     </strong>
                     <li class="list-group-item" id="exibirINSS"></li>
                     <li class="list-group-item" id="exibirDecimoInss"></li>
                     <li class="list-group-item disabled" aria-disabled="true" id="liquido"></li>
                 </ul>
             </article>
-            <article class="mb-1">
-                <a href="#" id="mostrarInfo">Como funciona o cálculo?</a>
-                <div class="d-none mx-auto border border-1 border-black rounded p-2 w-50" id="invisible">
-                    <p><strong>Salário Proporcional:</strong> Calculamos o valor do salário referente aos dias trabalhados no mês da
+            <!-- SEGUNDO ARTICLE EXIBE AS INFORMAÇÕES DE COMO É FEITO O CÁLCULO -->
+            <article class="  mt-3">
+                <a href="#" id="mostrarInfo" class="btn btn-link">Como funciona o cálculo?</a>
+                <div class="d-none p-2 w-50" id="invisible">
+                    <p><strong>Salário Proporcional:</strong> Calculamos o valor do salário referente aos dias
+                        trabalhados no mês da
                         rescisão dividindo o salário bruto por 31 e multiplicando pelo número de dias trabalhados.
                     </p>
-                    <p> <strong>Décimo Terceiro Proporcional:</strong>culamos o valor do décimo terceiro proporcional dividindo o
+                    <hr>
+                    <p> <strong>Décimo Terceiro Proporcional:</strong>culamos o valor do décimo terceiro proporcional
+                        dividindo o
                         salário bruto por 12 e multiplicando pelo número de meses trabalhados no ano corrente.
                     </p>
-                    <p> <strong>Férias Vencidas:</strong> Se você tem férias vencidas (não gozadas), calculamos adicionando um terço ao
+                    <hr>
+
+                    <p> <strong>Férias Vencidas:</strong> Se você tem férias vencidas (não gozadas), calculamos
+                        adicionando um terço ao
                         valor do salário bruto (1/3 a mais do salário).
                     </p>
-                    <p><strong>Férias Proporcionais:</strong> Calculamos as férias proporcionais dividindo o salário bruto por 12 e
+                    <hr>
+
+                    <p><strong>Férias Proporcionais:</strong> Calculamos as férias proporcionais dividindo o salário
+                        bruto por 12 e
                         multiplicando pelo número de meses trabalhados desde o último período aquisitivo.</p>
-                    <p><strong>Descontos:</strong> Calculamos os descontos baseados em seu saldo de salário, no mês de demissão, e sobre
+                    <hr>
+
+                    <p><strong>Descontos:</strong> Calculamos os descontos baseados em seu saldo de salário, no mês de
+                        demissão, e sobre
                         o seu valor
                         de Décimo 13º.</p>
+                    <hr>
                     <p><strong>Saldo Líquido:</strong> É somado os descontos e depois subtraído do total bruto.</p>
                 </div>
             </article>
         </section>
-        <footer class="d-flex flex-column align-items-center justify-content-center mt-3">
-            <p>Desenvolvido por <a class="text-dark link-underline-primary link-underline-opacity-10 link-underline-opacity-100-hover"
+        <!-- RODAPÉ DA PÁGINA -->
+        <footer class="d-flex flex-column align-items-center justify-content-center">
+            <p>Desenvolvido por <a
+                    class="text-dark link-underline-primary link-underline-opacity-10 link-underline-opacity-100-hover"
                     href="https://ingriddev.netlify.app/" target="_blank">Ingrid de Souza</a></p>
             <div class="d-flex">
                 <a href="https://www.linkedin.com/in/ingridssilveira/" class="icons" target="_blank">
