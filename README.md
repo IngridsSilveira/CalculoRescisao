@@ -1,4 +1,4 @@
-![Logo do projeto]("")
+<img style="border-radius: 8px;" src="./src/imgs/screenshot.png">
 
 # Cálculo de Rescisão
 
