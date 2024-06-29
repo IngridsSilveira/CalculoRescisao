@@ -1,4 +1,4 @@
-![Logo do projeto]("#")
+![Logo do projeto]("")
 
 # Cálculo de Rescisão
 
