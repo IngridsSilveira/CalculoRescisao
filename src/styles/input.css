@@ -26,10 +26,19 @@ input {
 .btn-link {
   color: #0220a3;
 }
+p {
+  font-size: 18px;
+}
 .icons {
   margin-top: -20px;
   font-size: 30px;
 }
 .icons:hover {
   opacity: 80%;
+}
+
+@media (max-width: 678px) {
+  .largura {
+    width: 100% !important;
+  }
 }
